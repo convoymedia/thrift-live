@@ -49,5 +49,6 @@
 			<div id="access" role="navigation">
 				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 			</div>
+			<br class="clear"/>
 		</div>
 	</header>
