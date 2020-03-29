@@ -22,10 +22,21 @@ header {
     width:100%;
 }
 
+header {
+    padding-bottom:30px;
+    color:#282828;
+    background:white;
+}
+
 .home header {
     padding-bottom:30px;
     background:#282828;
     color:white;
+}
+
+header a {
+    color:#282828;
+    text-decoration:none;
 }
 
 .home header a {
