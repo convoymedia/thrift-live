@@ -107,13 +107,13 @@ function twentyten_setup() {
 
 	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
 	// Add a filter to twentyten_header_image_width and twentyten_header_image_height to change these values.
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyten_header_image_width', 940 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyten_header_image_height', 198 ) );
+	//define( 'HEADER_IMAGE_WIDTH', apply_filters( 'twentyten_header_image_width', 940 ) );
+	//define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'twentyten_header_image_height', 198 ) );
 
 	// We'll be using post thumbnails for custom header images on posts and pages.
 	// We want them to be 940 pixels wide by 198 pixels tall.
 	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
+	//set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
 
 	// Don't support text inside the header image.
 	define( 'NO_HEADER_TEXT', true );
@@ -367,64 +367,89 @@ endif;
 function twentyten_widgets_init() {
 	// Area 1, located at the top of the sidebar.
 	register_sidebar( array(
-		'name' => __( 'Primary Widget Area', 'twentyten' ),
-		'id' => 'primary-widget-area',
-		'description' => __( 'The primary widget area', 'twentyten' ),
+		'name' => __( 'Header Widget Area', 'twentyten' ),
+		'id' => 'header-widget-area',
+		'description' => __( 'The header widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 
-	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'Secondary Widget Area', 'twentyten' ),
-		'id' => 'secondary-widget-area',
-		'description' => __( 'The secondary widget area', 'twentyten' ),
+		'name' => __( 'Footer Top Left Widget Area', 'twentyten' ),
+		'id' => 'ftl-widget-area',
+		'description' => __( 'The footer top left widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 
-	// Area 3, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'First Footer Widget Area', 'twentyten' ),
-		'id' => 'first-footer-widget-area',
-		'description' => __( 'The first footer widget area', 'twentyten' ),
+		'name' => __( 'Footer Top Right Widget Area', 'twentyten' ),
+		'id' => 'ftr-widget-area',
+		'description' => __( 'The footer top right widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 
-	// Area 4, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'Second Footer Widget Area', 'twentyten' ),
-		'id' => 'second-footer-widget-area',
-		'description' => __( 'The second footer widget area', 'twentyten' ),
+		'name' => __( 'Footer Middle 1 Widget Area', 'twentyten' ),
+		'id' => 'fm1-widget-area',
+		'description' => __( 'The middle 1 widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 
-	// Area 5, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'Third Footer Widget Area', 'twentyten' ),
-		'id' => 'third-footer-widget-area',
-		'description' => __( 'The third footer widget area', 'twentyten' ),
+		'name' => __( 'Footer Middle 2 Widget Area', 'twentyten' ),
+		'id' => 'fm2-widget-area',
+		'description' => __( 'The middle 2 widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
 
-	// Area 6, located in the footer. Empty by default.
 	register_sidebar( array(
-		'name' => __( 'Fourth Footer Widget Area', 'twentyten' ),
-		'id' => 'fourth-footer-widget-area',
-		'description' => __( 'The fourth footer widget area', 'twentyten' ),
+		'name' => __( 'Footer Middle 3 Widget Area', 'twentyten' ),
+		'id' => 'fm3-widget-area',
+		'description' => __( 'The middle 3 widget area', 'twentyten' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Footer Middle 4 Widget Area', 'twentyten' ),
+		'id' => 'fm4-widget-area',
+		'description' => __( 'The middle 4 widget area', 'twentyten' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Footer Bottom Left Widget Area', 'twentyten' ),
+		'id' => 'fbl-widget-area',
+		'description' => __( 'The footer bottom left widget area', 'twentyten' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Footer Bottom Right Widget Area', 'twentyten' ),
+		'id' => 'fbr-widget-area',
+		'description' => __( 'The footer bottom right widget area', 'twentyten' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
 		'before_title' => '<h3 class="widget-title">',
@@ -497,3 +522,12 @@ function twentyten_posted_in() {
 	);
 }
 endif;
+
+function prefix_nav_description( $item_output, $item, $depth, $args ) {
+    if ( !empty( $item->description ) ) {
+		$item_output = str_replace("</a>", "<span class='menu-desc'>".$item->description."</span></a>", $item_output);
+		//str_replace( $args->link_after . '', '' . $item->description . '' . $args->link_after . '', $item_output );
+    }
+    return $item_output;
+}
+add_filter( 'walker_nav_menu_start_el', 'prefix_nav_description', 10, 4 );

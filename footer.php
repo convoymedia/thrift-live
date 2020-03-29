@@ -10,24 +10,40 @@
  * @since Starkers 3.0
  */
 ?>
-
-<?php
-	/* A sidebar in the footer? Yep. You can can customize
-	 * your footer with four columns of widgets.
-	 */
-	get_sidebar( 'footer' );
-?>
-
-			<a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-			<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress </a>
-
-<?php
-	/* Always have wp_footer() just before the closing </body>
-	 * tag of your theme, or you will break many plugins, which
-	 * generally use this hook to reference JavaScript files.
-	 */
-
-	wp_footer();
-?>
+<footer>
+	<div class="container">
+		<div class="border-bottom">
+			<ul class="footer-top-left">
+				<?php dynamic_sidebar("ftl-widget-area"); ?>
+			</ul>
+			<ul class="footer-top-right">
+				<?php dynamic_sidebar("ftr-widget-area"); ?>
+			</ul>
+			<br class="clear" />
+		</div>
+		<div class="border-bottom flexed">
+			<ul>
+				<?php dynamic_sidebar("fm1-widget-area"); ?>
+			</ul>
+			<ul>
+				<?php dynamic_sidebar("fm2-widget-area"); ?>
+			</ul>
+			<ul>
+				<?php dynamic_sidebar("fm3-widget-area"); ?>
+			</ul>
+			<ul>
+				<?php dynamic_sidebar("fm4-widget-area"); ?>
+			</ul>
+		</div>
+		<ul class="bottom-left">
+			<?php dynamic_sidebar("fbl-widget-area"); ?>
+		</ul>
+		<ul class="bottom-right">
+			<?php dynamic_sidebar("fbr-widget-area"); ?>
+		</ul>
+		<br class="clear" />
+	</div>
+</footer>
+<?php wp_footer(); ?>
 </body>
 </html>
