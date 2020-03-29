@@ -149,6 +149,12 @@ header a {
 #menu-header-menu .sub-menu > li {
     margin:0px;
     display:block;
+    background-color: white;
+}
+
+.home #menu-header-menu .sub-menu > li {
+    margin:0px;
+    display:block;
     background-color: #282828;
 }
 
