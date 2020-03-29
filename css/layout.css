@@ -23,7 +23,6 @@ header {
 }
 
 header {
-    padding-bottom:30px;
     color:#282828;
     background:white;
 }
@@ -35,7 +34,8 @@ header {
 }
 
 header a {
-    color:#282828;
+    color:#282828
+    ;
     text-decoration:none;
 }
 
