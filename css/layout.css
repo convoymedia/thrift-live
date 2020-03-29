@@ -33,6 +33,16 @@ header {
     text-decoration:none;
 }
 
+.site-home-logo {
+    float:left;
+}
+
+#menu-header-menu {
+    float: right;
+    margin-top: 70px;
+    padding-bottom: 30px;
+}
+
 #menu-header-menu a:hover {
     color:#20B1B8;
 }

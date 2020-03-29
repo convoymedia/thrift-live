@@ -45,7 +45,7 @@
 			<ul class="call-to-action">
 				<?php dynamic_sidebar( 'header-widget-area' ); ?>
 			</ul>
-			<a href="<?php echo get_home_url(); ?>"><img src="<?php echo get_header_image(); ?>" /></a>
+			<a class="site-home-logo" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_header_image(); ?>" /></a>
 			<div id="access" role="navigation">
 				<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 			</div>
