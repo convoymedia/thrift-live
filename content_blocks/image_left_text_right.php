@@ -4,7 +4,7 @@
             ?>
             <div class="second-colour" style="background:<?php the_sub_field("2nd_colour"); ?>">
             <?php 
-                the_sub_field("button_gradient_or_colour")
+                the_sub_field("button_gradient_or_colour");
                 if (get_sub_field("include_button")) { ?>
                     
                     <?php 
