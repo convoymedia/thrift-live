@@ -11,7 +11,7 @@
                             ?>
                             <a href="<?php the_sub_field("button_link"); ?>">
                                 <button style="background-color:<?php the_sub_field("button_colour"); ?>;color:<?php the_sub_field("button_text_colour"); ?>">
-                                    <?php the_sub_field("button_title"); ?>ssss
+                                    <?php the_sub_field("button_title"); ?>
                                 </button>
                             </a>
                             <?php

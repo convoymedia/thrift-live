@@ -11,6 +11,7 @@
         ?>
         <?php if (get_sub_field("include_button")) { ?>
             <?php 
+            the_sub_field("button_gradient_or_colour");
                         if (get_sub_field("button_gradient_or_colour") === "colour") {
                             ?>
                             <a href="<?php the_sub_field("button_link"); ?>" class="<?php the_sub_field("speech_box_style")?>_button">
