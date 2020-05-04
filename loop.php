@@ -18,13 +18,16 @@
  * @since Starkers 3.0
  */
 ?>
-
-<?php /* Display navigation to next/previous pages when applicable */ ?>
-<?php if ( $wp_query->max_num_pages > 1 ) : ?>
-		<?php next_posts_link( __( '&larr; Older posts', 'twentyten' ) ); ?>
-		<?php previous_posts_link( __( 'Newer posts &rarr;', 'twentyten' ) ); ?>
-<?php endif; ?>
-
+<div class="header_banner" style="background-image:url(<?php bloginfo('template_directory'); ?>/images/news.jpg)">
+    <img src="<?php bloginfo('template_directory'); ?>/images/news.jpg" />
+    <div class="text-holder">
+        <h2>News</h2>
+        <div class="texts">For the latest industry news,<br/>scroll down.</div>
+    </div>
+    <div class="left-texts">
+        <?php the_sub_field("left_text"); ?>
+    </div>
+</div>
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if ( ! have_posts() ) : ?>
 		<h1><?php _e( 'Not Found', 'twentyten' ); ?></h1>
@@ -33,103 +36,76 @@
 
 <?php endif; ?>
 
-<?php
-	/* Start the Loop.
-	 *
-	 * In Twenty Ten we use the same loop in multiple contexts.
-	 * It is broken into three main parts: when we're displaying
-	 * posts that are in the gallery category, when we're displaying
-	 * posts in the asides category, and finally all other posts.
-	 *
-	 * Additionally, we sometimes check for whether we are on an
-	 * archive page, a search page, etc., allowing for small differences
-	 * in the loop on each template without actually duplicating
-	 * the rest of the loop that is shared.
-	 *
-	 * Without further ado, the loop:
-	 */ ?>
-<?php while ( have_posts() ) : the_post(); ?>
+<div class="the-posts">
+	<div class="latest">
+	<?php
+		$args = array(
+			'post_status' => 'publish',
+			'posts_per_page'=>2,
+			'order'=>'DESC',
+		);
 
-<?php /* How to display posts in the Gallery category. */ ?>
-
-	<?php if ( in_category( _x('gallery', 'gallery category slug', 'twentyten') ) ) : ?>
-			<h2><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-			<?php twentyten_posted_on(); ?>
-
-<?php if ( post_password_required() ) : ?>
-				<?php the_content(); ?>
-<?php else : ?>
-<?php
-	$images = get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 999 ) );
-	$total_images = count( $images );
-	$image = array_shift( $images );
-	$image_img_tag = wp_get_attachment_image( $image->ID, 'thumbnail' );
-?>
-					<a href="<?php the_permalink(); ?>"><?php echo $image_img_tag; ?></a>
-
-				<p><?php printf( __( 'This gallery contains <a %1$s>%2$s photos</a>.', 'twentyten' ),
-						'href="' . get_permalink() . '" title="' . sprintf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ) . '" rel="bookmark"',
-						$total_images
-					); ?></p>
-
-				<?php the_excerpt(); ?>
-<?php endif; ?>
-
-				<a href="<?php echo get_term_link( _x('gallery', 'gallery category slug', 'twentyten'), 'category' ); ?>" title="<?php esc_attr_e( 'View posts in the Gallery category', 'twentyten' ); ?>"><?php _e( 'More Galleries', 'twentyten' ); ?></a>
-				|
-				<?php comments_popup_link( __( 'Leave a comment', 'twentyten' ), __( '1 Comment', 'twentyten' ), __( '% Comments', 'twentyten' ) ); ?>
-				<?php edit_post_link( __( 'Edit', 'twentyten' ), '|', '' ); ?>
-
-<?php /* How to display posts in the asides category */ ?>
-
-	<?php elseif ( in_category( _x('asides', 'asides category slug', 'twentyten') ) ) : ?>
-
-		<?php if ( is_archive() || is_search() ) : // Display excerpts for archives and search. ?>
-			<?php the_excerpt(); ?>
-		<?php else : ?>
-			<?php the_content( __( 'Continue reading &rarr;', 'twentyten' ) ); ?>
-		<?php endif; ?>
-
-				<?php twentyten_posted_on(); ?>
-				|
-				<?php comments_popup_link( __( 'Leave a comment', 'twentyten' ), __( '1 Comment', 'twentyten' ), __( '% Comments', 'twentyten' ) ); ?>
-				<?php edit_post_link( __( 'Edit', 'twentyten' ), '| ', '' ); ?>
-
-<?php /* How to display all other posts. */ ?>
-
-	<?php else : ?>
-			<h2><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'twentyten' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-			<?php twentyten_posted_on(); ?>
-
-	<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>
-			<?php the_excerpt(); ?>
-	<?php else : ?>
-			<?php the_content( __( 'Continue reading &rarr;', 'twentyten' ) ); ?>
-			<?php wp_link_pages( array( 'before' => '' . __( 'Pages:', 'twentyten' ), 'after' => '' ) ); ?>
-	<?php endif; ?>
-
-				<?php if ( count( get_the_category() ) ) : ?>
-					<?php printf( __( 'Posted in %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-cat-links', get_the_category_list( ', ' ) ); ?>
-					|
-				<?php endif; ?>
-				<?php
-					$tags_list = get_the_tag_list( '', ', ' );
-					if ( $tags_list ):
+		$the_query = new WP_Query( $args );
+		if ( $the_query->have_posts() ) {
+			while ( $the_query->have_posts() ) {
+				$the_query->the_post();
 				?>
-					<?php printf( __( 'Tagged %2$s', 'twentyten' ), 'entry-utility-prep entry-utility-prep-tag-links', $tags_list ); ?>
-					|
-				<?php endif; ?>
-				<?php comments_popup_link( __( 'Leave a comment', 'twentyten' ), __( '1 Comment', 'twentyten' ), __( '% Comments', 'twentyten' ) ); ?>
-				<?php edit_post_link( __( 'Edit', 'twentyten' ), '| ', '' ); ?>
-
-		<?php comments_template( '', true ); ?>
-
-	<?php endif; // This was the if statement that broke the loop into three parts based on categories. ?>
-
-<?php endwhile; // End the loop. Whew. ?>
+				<div>
+					<div class="sub-title">LATEST</div>
+					<img src="<?php echo get_the_post_thumbnail_url(); ?>" />
+					<h3><?php the_title(); ?></h3>
+					<div class="excerpt"><?php the_excerpt(); ?></div>
+				</div>
+				<?php
+			}
+		}
+		wp_reset_postdata();
+	?>
+	</div>
+	<div class="filter">
+		<div class="filter-title">Filter:</div>
+		<ul class="cats"><?php wp_list_categories(array('title_li'=>'')); ?></ul>
+	</div>
+	<div class="posts">
+	<?php 
+		if (have_posts()) {
+			while (have_posts()) {
+				the_post();
+				?>
+					<div>
+						<img src="<?php echo get_the_post_thumbnail_url(); ?>" />
+						<h3><?php the_title(); ?></h3>
+						<div class="excerpt"><?php the_excerpt(); ?></div>
+					</div>
+					<?php
+			}
+		}
+	?>
+	</div>
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if (  $wp_query->max_num_pages > 1 ) : ?>
-				<?php next_posts_link( __( '&larr; Older posts', 'twentyten' ) ); ?>
-				<?php previous_posts_link( __( 'Newer posts &rarr;', 'twentyten' ) ); ?>
+<div class="pages">
+	<?php 
+		if ( get_previous_posts_link() ) {
+			previous_posts_link( 'PREVIOUS', 0 );
+		}
+		else {
+			?><span class="no">PREVIOUS</span><?php
+		}
+		if ( get_next_posts_link() ) {
+			next_posts_link( 'NEXT', 0 );
+		}
+		else {
+			?><span class="no">NEXT</span><?php
+		}
+	?>
+</div>
 <?php endif; ?>
+
+</div>
+<div class="two_column_logo">
+    <div class="logo-h2"><h2>Quality service</h2></div>
+    <div class="logo-text">We don't do things by half, rest assured. Thrift Energy is proud to boast a team of motivated experts committed to providing the best possible service - from our experienced and vetted tradesmen, to our helpful customer service team.</div>
+</div>
+<div class="logos"><img class="alignnone size-full wp-image-546" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-3.png" alt="" width="170" height="52" /> <img class="alignnone size-full wp-image-547" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-2.png" alt="" width="66" height="19" /> <img class="alignnone size-full wp-image-548" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-4.png" alt="" width="53" height="25" /> <img class="alignnone size-full wp-image-549" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-5.png" alt="" width="66" height="23" /> <img class="alignnone size-full wp-image-550" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-6.png" alt="" width="93" height="20" /> <img class="alignnone size-full wp-image-551" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-8.png" alt="" width="107" height="35" /> <img class="alignnone size-full wp-image-552" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-9.png" alt="" width="69" height="27" /> <img class="alignnone size-full wp-image-553" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-10.png" alt="" width="44" height="45" /> <img class="alignnone size-full wp-image-554" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-11.png" alt="" width="59" height="29" /> <img class="alignnone size-full wp-image-555" src="http://www.convoyportal.com/thrift2/wp-content/uploads/2020/04/Asset-12.png" alt="" width="59" height="33" /></div>

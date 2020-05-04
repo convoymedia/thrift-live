@@ -254,7 +254,7 @@ add_filter( 'excerpt_length', 'twentyten_excerpt_length' );
  * @return string "Continue Reading" link
  */
 function twentyten_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyten' ) . '</a>';
+	return '<a href="'. get_permalink() . '" class="read-more" ><button>' . __( 'READ MORE', 'twentyten' ) . '<button></a>';
 }
 
 /**
@@ -366,6 +366,19 @@ endif;
  */
 function twentyten_widgets_init() {
 	// Area 1, located at the top of the sidebar.
+
+	
+
+	register_sidebar( array(
+		'name' => __( 'Blog Widget Area', 'twentyten' ),
+		'id' => 'primary-widget-area',
+		'description' => __( 'The primary widget area', 'twentyten' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
 	register_sidebar( array(
 		'name' => __( 'Header Widget Area', 'twentyten' ),
 		'id' => 'header-widget-area',

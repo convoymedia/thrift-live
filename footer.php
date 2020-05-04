@@ -43,7 +43,12 @@
 		</ul>
 		<br class="clear" />
 	</div>
+
+	<center style="color: white;text-decoration: none;font-size:13px;">
+		Site by <a href="http://jakhq.com/" targer="_blank" style="color: white;text-decoration: none;">Jak HQ</a>
+	</center>
 </footer>
+
 <?php wp_footer(); ?>
 </body>
 </html>

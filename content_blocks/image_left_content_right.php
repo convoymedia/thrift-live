@@ -4,7 +4,7 @@
             <img src="<?php the_sub_field("image"); ?>" style="margin-top:<?php the_sub_field("image_margin"); ?>px" />
         </div>
         <div class="right">
-            <div class="text-content">
+            <div class="text-content" data-aos="fade-up">
                 <?php the_sub_field("content"); ?>
             </div>
         </div>
