@@ -31,7 +31,7 @@
             <?php
         }
     ?>
-    <div class="image-right">
+    <div class="image-right" data-aos="fade-left">
         <?php 
              if (get_sub_field("include_speech_box")) {
             ?>
@@ -41,7 +41,7 @@
         ?>
         <img src="<?php the_sub_field("image"); ?>" />
     </div>
-    <div class="text-left">
+    <div class="text-left" data-aos="fade-right">
         <h2><?php the_sub_field("title"); ?></h2>
         <?php the_sub_field("text"); ?>
         <?php 
