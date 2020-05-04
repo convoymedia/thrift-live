@@ -1,5 +1,5 @@
 <div class="text_left_image_right <?php if (get_sub_field("include_speech_box")) { ?>sbox sbox2<?php } ?>" style="background-color:<?php the_sub_field("colour") ?>">
-    <div class="text-left" data-aos="fade-right">
+    <div class="text-left">
         <h2 style="color:<?php the_sub_field("text_colour"); ?>"><?php the_sub_field("title"); ?></h2>
         <?php the_sub_field("text"); ?>
         <?php 
@@ -32,7 +32,7 @@
                     }
             ?>
     </div>
-    <div class="image-right" data-aos="fade-left">
+    <div class="image-right">
         <img src="<?php the_sub_field("image"); ?>" />
     </div>
 </div>
