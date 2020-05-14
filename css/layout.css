@@ -1616,4 +1616,13 @@ height: 110px;
     background-repeat:no-repeat;
     justify-content:center;
     align-content:center;
+    align-items:center
+}
+
+.header-centered-text > * {
+    color: #ffffff;
+    font-size: 88px;
+    font-weight: 700;
+    max-width: 45%;
+    text-align:center;
 }
