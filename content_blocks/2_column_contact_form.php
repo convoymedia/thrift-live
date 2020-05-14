@@ -1,5 +1,5 @@
 <div class="two_column_contact_form" style="background-image:url(<?php the_sub_field("bg_image"); ?>);<?php the_sub_field("background_css") ?>">
-    <div class="left-holder-text" style="background-image:url(<?php the_sub_field("background_image"); ?>)">
+    <div class="left-holder-text" style="background-image:url(<?php the_sub_field("background_image"); ?>);background-color:<?php the_sub_field("background_colour") ?>;">
         <div class="form-text">
             <?php the_sub_field("left_content"); ?>
         </div>
