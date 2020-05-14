@@ -1626,3 +1626,12 @@ height: 110px;
     max-width: 45%;
     text-align:center;
 }
+
+.three_column a {
+    color:black;
+    text-decoration:none;
+}
+
+.invert .three_column a {
+    color:white;
+}
