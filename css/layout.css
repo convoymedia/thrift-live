@@ -1635,3 +1635,15 @@ height: 110px;
 .invert .three_column a {
     color:white;
 }
+
+.text_block_centered {
+    position:relative;
+}
+
+.box {
+    margin-top:40px;
+    margin-bottom:40px;
+    width:800px;
+    padding:25px 50px;
+    box-sizing:border-box;
+}
