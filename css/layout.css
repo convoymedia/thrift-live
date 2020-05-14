@@ -1605,3 +1605,15 @@ button {
 .wpcf7-form textarea {
 height: 110px;
 }
+
+.header-centered-text {
+    position:relative;
+    display:flex;
+    width:100%;
+    height:790px;
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    justify-content:center;
+    align-content:center;
+}
