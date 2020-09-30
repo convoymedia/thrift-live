@@ -11,7 +11,10 @@
  */
 ?>
 <footer>
-	<div class="container">
+	<ul class="show-mobile mobile-footer-menu">
+		<?php dynamic_sidebar("mobile-widget-area"); ?>
+	</ul>
+	<div class="container hide-mobile">
 		<div class="border-bottom">
 			<ul class="footer-top-left">
 				<?php dynamic_sidebar("ftl-widget-area"); ?>
@@ -48,6 +51,12 @@
 		Site by <a href="http://jakhq.com/" targer="_blank" style="color: white;text-decoration: none;">Jak HQ</a>
 	</center>
 </footer>
+<div id='slider'>
+	<div id='trigger'>Apply for Funding</div>
+	<div class="content-holder-form">
+		<?php echo do_shortcode('[contact-form-7 id="1042" title="Apply for funding"]'); ?>
+	</div>
+</div>
 
 <?php wp_footer(); ?>
 </body>

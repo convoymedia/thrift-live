@@ -14,12 +14,12 @@ get_header(); ?>
 <div class="header_banner" style="background-image:url(<?php echo get_the_post_thumbnail_url(); ?>)">
     <img src="<?php echo get_the_post_thumbnail_url(); ?>" />
 </div>
-<div class="container" style="display:flex;flex-direction:row;width:950px;">
-	<div class="the-content" style="width:67%;padding-right: 3%;box-sizing: border-box;">
+<div class="container bsingle">
+	<div class="the-content">
 		<h1><?php the_title();?></h1>
 		<?php the_content(); ?>
 	</div>
-	<div class="width:20%;">
+	<div class="bside">
 		<?php get_sidebar(); ?>
 	</div>
 </div>

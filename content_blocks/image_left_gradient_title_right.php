@@ -1,4 +1,4 @@
-<div class="image_left_gradient_title_right" data-aos="fade-down">
+<div class="image_left_gradient_title_right block2" data-aos="fade-down">
     <div class="left-image-side">
         <img src="<?php the_sub_field("image"); ?>" />
     </div>

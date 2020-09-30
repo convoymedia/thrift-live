@@ -1,10 +1,12 @@
-<div class="two_column_contact_form" style="background-image:url(<?php the_sub_field("bg_image"); ?>);<?php the_sub_field("background_css") ?>">
+<div class="two_column_contact_form <?php if (get_sub_field("background_image")) { ?>with-image<?php } ?>" style="background-image:url(<?php the_sub_field("bg_image"); ?>);<?php the_sub_field("background_css") ?>;background-color:<?php the_sub_field("background_colour") ?>;">
+
     <div class="left-holder-text" style="background-image:url(<?php the_sub_field("background_image"); ?>);background-color:<?php the_sub_field("background_colour") ?>;">
         <div class="form-text">
             <?php the_sub_field("left_content"); ?>
         </div>
     </div>
     <div class="right-holder-form" style="background-color:<?php the_sub_field("bg_colour"); ?>">
+    <div style="width:100%;max-width:693px;">
         <div class="form-right-text" style="color:<?php the_sub_field("text_colour"); ?>;">
             <?php the_sub_field("right_text"); ?>
         </div>
@@ -13,4 +15,5 @@
             <?php the_sub_field("form"); ?>
         </div>
     </div>
+</div>
 </div>
